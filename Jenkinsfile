@@ -7,21 +7,21 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Setup') {
-            steps {
-                sh 'export PATH=$PATH:/usr/local/go/bin'
-            }
-        }
 
         stage('Build') {
             steps {
-                sh 'go build'
+                sh '/usr/local/go/bin/go build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'go test ./...'
+                sh '/usr/local/go/bin/go test ./...'
+            }
+        }
+         stage('Dockerise') {
+            steps {
+                sh 'docker build -t localbuild .'
             }
         }
     }
