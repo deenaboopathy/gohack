@@ -10,6 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'export PATH=$PATH:/usr/local/go/bin'
                 sh 'go build'
             }
         }
