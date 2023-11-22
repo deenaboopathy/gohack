@@ -7,10 +7,14 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Setup') {
+            steps {
+                sh 'export PATH=$PATH:/usr/local/go/bin'
+            }
+        }
 
         stage('Build') {
             steps {
-                sh 'export PATH=$PATH:/usr/local/go/bin'
                 sh 'go build'
             }
         }
