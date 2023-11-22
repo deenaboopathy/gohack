@@ -14,7 +14,7 @@ There is a more advanced example in [olliefr/docker-gs-ping-roach](https://githu
 
 ## Contributing
 
-This was written for an _introduction_ section of the Docker tutorial and as such it favours brevity and pedagogical clarity over robustness. 
+This was written for an _introduction_ section of the Docker tutorial and as such it favors brevity and pedagogical clarity over robustness. 
 
 Thus, feedback is welcome, but please no nits or pedantry. Ain't nobody got time for that 🙃
 
