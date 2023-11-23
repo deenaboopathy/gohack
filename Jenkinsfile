@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Docker Bootup Test') {
             steps {
-                sh 'docker rm -f $(docker ps -a -q) && docker run -d -p 8070:8080 goapp:${JOB_NAME}-${BUILD_NUMBER}'
+                sh 'docker run -d -p 8070:8080 goapp:${JOB_NAME}-${BUILD_NUMBER}'
             }
         }
         stage('Automation Testing') {
