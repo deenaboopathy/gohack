@@ -30,25 +30,33 @@ pipeline {
             }
         }
          stage('Dockerise') {
-
+             when {
+                 changeRequest()
+             }
             steps {
                 sh 'docker build -t goapp:${BUILD_ID}-${BUILD_NUMBER} . && docker run -d ubuntu'
             }
         }
         stage('Docker Bootup Test') {
-
+             when {
+                 changeRequest()
+             }
             steps {
                 sh 'docker rm -f $(docker ps -a -q) && docker run -d -p 8070:8080 goapp:${BUILD_ID}-${BUILD_NUMBER}'
             }
         }
         stage('Automation Testing') {
-
+             when {
+                 changeRequest()
+             }
             steps {
                 sh 'rm -rf autohack && git clone https://github.com/deenaboopathy/autohack.git && python3 ./autohack/automationscript.py 8070'
             }
         }
         stage('Clean UP') {
-
+             when {
+                 changeRequest()
+             }
             steps {
                 sh 'docker rm -f $(docker ps -a -q)'
             }
