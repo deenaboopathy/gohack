@@ -31,7 +31,9 @@ pipeline {
         }
          stage('Dockerise') {
             steps {
-                sh 'docker build -t goapp:${BUILD_ID}-${BUILD_NUMBER} . && docker run -d ubuntu'
+                when (BRANCH_NAME.contains('feature')) {
+                    sh 'docker build -t goapp:${BUILD_ID}-${BUILD_NUMBER} . && docker run -d ubuntu'
+                }
             }
         }
         stage('Docker Bootup Test') {
