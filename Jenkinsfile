@@ -21,12 +21,12 @@ pipeline {
         }
          stage('Dockerise') {
             steps {
-                sh 'docker build -t goapp:${JOB_NAME}-${BUILD_NUMBER} .'
+                sh 'docker build -t goapp:${BUILD_ID}-${BUILD_NUMBER} .'
             }
         }
         stage('Docker Bootup Test') {
             steps {
-                sh 'docker run -d -p 8070:8080 goapp:${JOB_NAME}-${BUILD_NUMBER}'
+                sh 'docker run -d -p 8070:8080 goapp:${BUILD_ID}-${BUILD_NUMBER}'
             }
         }
         stage('Automation Testing') {
