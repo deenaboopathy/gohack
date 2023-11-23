@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Automation Testing') {
             steps {
-                sh 'git clone https://github.com/deenaboopathy/autohack.git && cd autohack && python3 automationscript.py'
+                sh 'git clone https://github.com/deenaboopathy/autohack.git && cd autohack && python3 automationscript.py 8070'
             }
         }
         stage('Clean UP') {
