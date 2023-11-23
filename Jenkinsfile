@@ -19,6 +19,16 @@ pipeline {
                 sh '/usr/local/go/bin/go test ./...'
             }
         }
+        stage('Sonarqube Scan') {
+            steps {
+                sh 'echo StageSkipped'
+            }
+        }
+        stage('Nexus IQ') {
+            steps {
+                sh 'echo StageSkipped'
+            }
+        }
          stage('Dockerise') {
             steps {
                 sh 'docker build -t goapp:${BUILD_ID}-${BUILD_NUMBER} .'
